@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> TEST BUTTON </title>
+</head>
+<body>
+
+<h2> TEST FRONTEND  →  BACKEND CONNECTION </h2>
+<h2> MY PERSONAL DETAILS </h2>
+
+<button onclick="connectBackend()"> CLICK ON THIS BUTTON </button>
+
+<p id="response"></p>
+
+<script>
+function connectBackend() {
+    fetch("http://127.0.0.1:5000/button-click")
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("response").innerText = data.message;
+        })
+        .catch(error => {
+            document.getElementById("response").innerText = " *CONNECTION FAILED* ";
+            console.error(error);
+        });
+}
+</script>
+
+</body>
+</html>
